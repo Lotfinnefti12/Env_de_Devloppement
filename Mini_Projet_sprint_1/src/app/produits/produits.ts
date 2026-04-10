@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { Produit } from '../model/produit.model';
+import { ProduitService } from '../services/produit';
 @Component({
   selector: 'app-produits',
   imports: [CommonModule],
@@ -8,9 +9,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './produits.css',
 })
 export class Produits {
-  produits: string[]; //un tableau de chînes de caractères
-  constructor() {
-    this.produits = ["T-shirt", "pantalon", "chaussures"];
+  produits: Produit[]; //un tableau de Produit
+  constructor(private produitService: ProduitService) {
+    this.produits = produitService.listeProduits();
   }
-
 }
